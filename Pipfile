@@ -4,6 +4,9 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+alembic = "*"
+psycopg2-binary = "*"
+asyncpg = "*"
 
 [dev-packages]
 fastapi = {extras = ["all"], version = "*"}
@@ -12,6 +15,7 @@ uvicorn = {extras = ["standard"], version = "*"}
 black = "*"
 mypy = "*"
 isort = "*"
+sqlalchemy = {extras = ["asyncio"], version = "*"}
 
 [requires]
 python_version = "3.12"
