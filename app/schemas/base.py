@@ -1,6 +1,8 @@
 import uuid
+
 from pydantic import BaseModel
 
-class Home(BaseModel):
+
+class HomeSchema(BaseModel):
     id: uuid.UUID
     info: str

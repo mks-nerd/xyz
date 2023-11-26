@@ -3,7 +3,7 @@ from typing import Final
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 from sqlalchemy.orm import DeclarativeBase, MappedAsDataclass
 
-from app.config import Settings, get_settings, get_db_url
+from app.config import Settings, get_db_url, get_settings
 
 
 class Base(MappedAsDataclass, DeclarativeBase):
