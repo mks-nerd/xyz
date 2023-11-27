@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  xyz-web:
+    build: .
+    command: uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000
+    volumes:
+      - .:/usr/src/xyz
+    ports:
+      - 8004:8000
+    environment:
+      - ENVIRONMENT=dev
+      - TESTING=0
+      - DATABASE_URL=postgresql+asyncpg://postgres:postgres@xyz-db:5432/postgres
+      - DATABASE_TEST_URL=postgresql+asyncpg://postgres:postgres@xyz-db:5432/postgres
+    depends_on:
+      - xyz-db
+    container_name: xyz-web
+
+  xyz-db:
+    image: postgres:16-alpine
+    expose:
+      - 5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    container_name: xyz-db
