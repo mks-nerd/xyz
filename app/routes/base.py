@@ -20,7 +20,7 @@ async def get_info():
     async with async_session() as session:
         result = await session.execute(query)
         result = result.scalars().all()
-    return {"home": result}
+    return {"data": result}
 
 
 @router.post("/info")
@@ -30,4 +30,4 @@ async def add_info(home_schema: HomeSchema):
         session.add(home)
         await session.flush()
         await session.commit()
-    return {"home": home.id}
+    return {"id": home.id}
